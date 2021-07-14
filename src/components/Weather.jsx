@@ -4,26 +4,17 @@ const Weather = (props) => {
 
     return (
         <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>main</th>
-                        <th>description</th>
-                        <th>icon</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        props.weather.map(i => (<tr key={i.id}>
-                            <td>{i.id}</td>
-                            <td>{i.main}</td>
-                            <td>{i.description}</td>
-                            <td>{i.icon}</td>
-                        </tr>))
-                    }
-                </tbody>
-            </table>
+            Location: {props.weather.name}, {props.weather.sys.country}
+            <br/>
+            Longitude: {props.weather.coord.lon} Latitude: {props.weather.coord.lat}
+            <br/>
+            Temperature: {Math.round(((props.weather.main.temp - 273.15) *9)/5 + 32)} F
+            <br/>
+            Feels like: {Math.round(((props.weather.main.feels_like - 273.15) *9)/5 + 32)} F
+            <br/>
+            humidity: {props.weather.main.humidity}
+            <br/>
+            decription: {props.weather.weather[0].description}
         </div>
 
     )

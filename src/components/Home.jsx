@@ -1,23 +1,25 @@
-import React, {Component} from 'react';
+import React , {useState} from 'react';
 import Weather from './Weather';
 
 
 function Home() {
-    const [data, setData] = React.useState(null);
+    const [data, setData] = useState([]);
+    let weatherDisplay = <Weather weather = {data}/>;
 
     React.useEffect(() => {
         fetch("http://localhost:8080/weather")
             .then((res) => res.json())
             .then((data) => {
-                setData(data.name)
+                setData(data)
             })
             
     }, []);
   
         return(
             <div>
-                home page
-                <p>{!data ? "loading..." : data}</p>
+                home page Pecos Weather Outlook
+                <br/>
+                <p>{!data ? "loading..." : weatherDisplay}</p>
             </div>
         );
 }
