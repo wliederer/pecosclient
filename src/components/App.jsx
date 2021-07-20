@@ -1,26 +1,22 @@
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Home from "./Home";
 import Social from "./Social";
+import Search from "./Search";
+import SignUp from "./SignUp";
+import Navbar from "./Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-      <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <ul className="navbar-nav mr-auto">
-            <li><Link to={'/'} className="nav-link"> Home </Link></li>
-            <li><Link to={'/social'} className="nav-link">Social</Link></li>
-          </ul>
-          </nav>
-          <hr/>
-        <Switch>
-          <Route exact path="/" component={Home}/>
-          <Route path="/social" component={Social}/>
-        </Switch>
-      </div>
-      </Router>
-    </div>
+    <Router>
+    <Navbar />
+    <Switch>
+      <Route path='/' exact component={Home} />
+      <Route path='/social' component={Social} />
+      <Route path='/search' component={Search} />
+      <Route path='/signin' component={SignUp} />
+    </Switch>
+  </Router>
   );
 }
 

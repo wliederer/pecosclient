@@ -13,7 +13,7 @@ class Social extends Component {
     render() {
         return(
             <div>
-                Social page
+                Social page coming soon #pecos
             </div>
         )
     }
