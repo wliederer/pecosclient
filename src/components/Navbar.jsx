@@ -5,20 +5,21 @@ const Navbar = () => {
     return (
       <>
         <Nav>
-          
           <NavMenu>
             <NavLink to='/' activeStyle>
               Home
             </NavLink>
-            <NavLink to='/social' activeStyle>
+            {/* <NavLink to='/social' activeStyle>
               Social
-            </NavLink>
+            </NavLink> */}
             <NavLink to='/search' activeStyle>
               Search
             </NavLink>
-            {/* Second Nav */}
-            {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
+            <NavBtnLink to='/signup'>Sign Up</NavBtnLink>
           </NavMenu>
+          <NavBtn>
+            <NavBtnLink to='/signin'>Sign Out</NavBtnLink>
+          </NavBtn>
           <NavBtn>
             <NavBtnLink to='/signin'>Sign In</NavBtnLink>
           </NavBtn>

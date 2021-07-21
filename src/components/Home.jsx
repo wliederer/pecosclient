@@ -1,4 +1,5 @@
 import React , {useState} from 'react';
+import axios from 'axios';
 import Weather from './Weather';
 
 function Home() {
@@ -6,12 +7,11 @@ function Home() {
     let weatherDisplay = null;//make state for
     
     React.useEffect(() => {
-        fetch("http://localhost:8080/pingweather")
-        .then((res) => res.json())
-        .then((data) => {
-            setData(data)
-        }).catch(function() {
-            console.log("error");
+        axios.get('http://localhost:8080/search')
+        .then(res =>{
+            console.log(res);
+        }).catch(err =>{
+            console.log(err);
         })
     },[]);
 
@@ -19,7 +19,7 @@ function Home() {
             <div>
                 home page Pecos Weather Outlook
                 <br/>
-                <p>{!data ? "loading..." : data}</p>
+                <p>{!data ? "loading..." : data.message}</p>
             </div>
         );
 }

@@ -6,14 +6,14 @@ const initialState = {
     password:""
 };
 
-class SignUp extends Component {
+class SignIn extends Component {
     constructor(props) {
         super(props)
         this.state = initialState;
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
+  
     handleClear = (e) => {
         console.log("clearing state")
     }
@@ -26,11 +26,13 @@ class SignUp extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8080/signup',{
+        axios.post('http://localhost:8080/signin',{
             username:this.state.username,
             password:this.state.password
         })
         .then(res =>{
+            document.cookie = "test" + " = " + "test";
+
             console.log(res);
         }).catch(err =>{
             console.log(err);
@@ -41,7 +43,7 @@ class SignUp extends Component {
     render() {
         return (
             <div>
-                SIGN UP PAGE
+                SIGN IN PAGE
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         username:
@@ -58,4 +60,4 @@ class SignUp extends Component {
     };
 }
 
-export default SignUp;
+export default SignIn;
