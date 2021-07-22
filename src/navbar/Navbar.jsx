@@ -1,20 +1,27 @@
 import React from 'react';
-import { Nav, NavMenu, NavBtn, NavBtnLink } from './NavbarElements';
+import { Nav, NavMenu, NavBtn, PlayButton } from './NavbarElements';
 import { Link } from 'react-router-dom';
 import SignOut from '../components/SignOut';
+import { ThemeProvider, Button } from "@playpickup/core";
+
 
 const Navbar = (props) => {
 
   return (
     <>
+    <ThemeProvider>
       <Nav>
         <NavMenu>
-          <NavBtnLink to='/' activeStyle>
+          <Link to='/' activeStyle>
+            <Button style={{padding:"10px",margin:"10px",fontSize:"15px" }}>
             Home
-          </NavBtnLink>
-          <NavBtnLink to='/search' activeStyle>
+            </Button>
+          </Link>
+          <Link to='/search' activeStyle>
+          <Button style={{padding:"10px",margin:"10px",fontSize:"15px" }}>
             Search
-          </NavBtnLink>
+          </Button>
+          </Link>
         </NavMenu>
         <NavBtn>
           {props.isLoggedIn ?
@@ -22,11 +29,15 @@ const Navbar = (props) => {
               <SignOut logout={props.logout} />
             </Link>
             :
-            <NavBtnLink to='/signin'>Sign In</NavBtnLink>
+            <Link to='/signin'>
+            <Button style={{padding:"10px",margin:"10px",fontSize:"15px" }}>
+            Sign In
+            </Button>
+            </Link>
           }
         </NavBtn>
-
       </Nav>
+          </ThemeProvider>
     </>
   );
 };

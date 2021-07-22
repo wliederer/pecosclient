@@ -6,7 +6,7 @@ import Weather from './Weather';
 function Home() {
     const [data, setData] = useState([]);
     const [weatherDisplay, setWeatherDisplay] = useState([]);
-    document.body.style = 'background: #F5F5DC;';
+    document.body.style = 'background: #f2f2f2;';
 
 
     React.useEffect(() => {

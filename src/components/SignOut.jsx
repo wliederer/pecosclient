@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { deleteCookie } from '../utility/Util';
 import styled from 'styled-components';
+import { Button } from "@playpickup/core";
+
 
 class SignOut extends React.Component {
     constructor(props) {
@@ -32,26 +34,26 @@ class SignOut extends React.Component {
 
       
       render() {
-          const Button = styled.button`
-          border-radius: 4px;
-  background: #808080;
-  padding: 10px 22px;
-  color: white;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  text-decoration: none;
-  /* Second Nav */
-  margin-left: 24px;
-  &:hover {
-    transition: all 0.2s ease-in-out;
-    background: #fff;
-    color: ;
-  }
-          `;
+        //   const Button = styled.button`
+        //     border-radius: 4px;
+        //     background: #808080;
+        //     padding: 10px 22px;
+        //     color: white;
+        //     outline: none;
+        //     border: none;
+        //     cursor: pointer;
+        //     transition: all 0.2s ease-in-out;
+        //     text-decoration: none;
+        //     /* Second Nav */
+        //     margin-left: 24px;
+        //     &:hover {
+        //     transition: all 0.2s ease-in-out;
+        //     background: #fff;
+        //     color: ;
+        //     }
+        //   `;
           return (
-              <Button onClick={this.handleClick}>
+              <Button style={{padding:"10px",margin:"10px",fontSize:"15px" }} onClick={this.handleClick}>
                   Sign Out
               </Button>
           )

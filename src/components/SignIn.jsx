@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getCookies, createCookie } from '../utility/Util';
 import axios from "axios";
+import { ThemeProvider, Button, createUseStyles, Label } from "@playpickup/core";
 
 const initialState = {
     username: "",
@@ -91,36 +92,60 @@ class SignIn extends Component {
         }
     }
 
+    useStyles = createUseStyles((DefaultTheme) => ({
+            root: {
+                display: "flex",
+                position: "relative",
+                padding: DefaultTheme.spacing.base * 2,
+                justifyContent: "center"
+            }
+    }))
+
+    ButtonDiv = ({ children}) => {
+        let classes = this.useStyles();
+        return <div className={classes.root}>{children}</div>
+    }
+
+
     render() {
         return (
-            <div style={{textAlign:"center"}}>
+            <ThemeProvider>
+            <div style={{maxWidth:"400px", margin:"auto" }}>
                 {this.props.isLoggedIn ? `welcome try clicking search` :
-                    <div>
+                    <div style={{padding:"20px"}}>
                         <div>
-                            <label><input type="checkbox" value="check" onChange={this.toggleSign} />toggle between {this.state.check ? "sign up" : "sign in"} </label>
+                        {this.state.check ? "sign up" : "sign in"}
+                        <br/>
+                            <br/>
+                            <Label><input type="checkbox" value="check" onChange={this.toggleSign} />toggle between sign in/ sign up </Label>
+                            
                             <form onSubmit={this.handleSubmit}>
-                                <label>
-                                    username:
-                                    <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
-                                </label>
-                                <br/>
-                                <label>
-                                    password:
-                                    <input type="text" name="password" value={this.state.password} onChange={this.handleChange} />
-                                </label>
+                                <Label>
+                                    username
+                                    <input style={{float:"left"}} type="text" name="username" value={this.state.username} onChange={this.handleChange} />
+                                </Label>
+                                
+                                
+                                <Label>
+                                    password
+                                    <input style={{float:"left"}} type="text" name="password" value={this.state.password} onChange={this.handleChange} />
+                                </Label>
                                 <br/>
                                 <div style={{color:"red"}}>
                                 {this.state.error}
 
                                 </div>
                                 
-                                <br/>
-                                <input type="submit" value="Submit" />
+                        
+                                    <this.ButtonDiv>
+                                    <Button style={{fontSize:"15px"}} className ="root" type="submit" value="Submit" >Submit</Button>
+                                    </this.ButtonDiv>
                             </form>
                         </div>
                     </div>
                 }
             </div>
+                </ThemeProvider>
         );
     };
 }
