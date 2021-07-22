@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Nav, NavMenu, NavBtn, NavBtnLink } from './NavbarElements';
+import { Nav, NavMenu, NavBtn, NavBtnLink } from './NavbarElements';
 import { Link } from 'react-router-dom';
 import SignOut from '../components/SignOut';
 

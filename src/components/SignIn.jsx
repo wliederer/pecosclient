@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { getCookies, createCookie } from '../utility/Util';
 import axios from "axios";
-import { findAllByTestId } from '@testing-library/react';
 
 const initialState = {
     username: "",
