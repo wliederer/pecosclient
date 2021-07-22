@@ -1,25 +1,39 @@
 import React , {useState} from 'react';
 import axios from 'axios';
+import { getCookies } from '../utility/Util';
 import Weather from './Weather';
 
 function Home() {
     const [data, setData] = useState([]);
-    let weatherDisplay = null;//make state for
-    
+    const [weatherDisplay, setWeatherDisplay] = useState([]);
+    document.body.style = 'background: #F5F5DC;';
+
+
     React.useEffect(() => {
-        axios.get('http://localhost:8080/search')
+        let cookieJsn = getCookies();
+        axios.get('http://localhost:8080/home',{
+            headers:{
+                'test': cookieJsn.sessionID,
+            }
+        })
         .then(res =>{
-            console.log(res);
+            setData(data);
+            setWeatherDisplay(<Weather weather = {res.data}/> )
         }).catch(err =>{
             console.log(err);
         })
     },[]);
 
+    const mystyle = {
+    }
+
         return(
-            <div>
+            <div style={{mystyle}}>
+                
                 home page Pecos Weather Outlook
                 <br/>
-                <p>{!data ? "loading..." : data.message}</p>
+                <p>{!data ? "loading..." : weatherDisplay}</p>
+              
             </div>
         );
 }

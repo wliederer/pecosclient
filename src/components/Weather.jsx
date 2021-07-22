@@ -1,12 +1,17 @@
 import React from 'react';
 
 const Weather = (props) => {
+    const mystyle = {
+        textAlign:"left"
+    }
 
     return (
-        <div>
-            Location: {props.weather.name}, {props.weather.sys.country}
+        <div style={{textAlign:"justify"}}>
+
+        <div style={{mystyle}}>
+            Location: {props.weather.name}
             <br/>
-             
+            
             Longitude: {props.weather.coord.lon} Latitude: {props.weather.coord.lat}
             <br/>
             Temperature: {props.weather.main.temp} F
@@ -17,6 +22,7 @@ const Weather = (props) => {
             <br/>
             decription: {props.weather.weather[0].description} 
              
+        </div>
         </div>
 
     )
